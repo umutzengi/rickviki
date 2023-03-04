@@ -31,24 +31,35 @@ const App = () => {
 const Fetcher = () => {
   let [pageNumber, updatePageNumber] = useState(1);
   let [search, setSearch] = useState("");
+  let [status, updateStatus] = useState("");
+  let [gender, updateGender] = useState("");
+  let [species, updateSpecies] = useState("");
 
   const { isLoading, error, data } = useQuery(
-    ["characters", pageNumber, search],
-    () => fetchCharacters({ pageNumber, search })
+    ["characters", pageNumber, search, status, gender, species],
+    () => fetchCharacters({ pageNumber, search, status, gender, species })
   );
-
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occured:" + error.massage;
   return (
-    <div className="container">
+    <div className="container-fluid">
       <h1 className="text-center mb-3">Characters</h1>
       <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
 
       <div className="row">
-        <div className="col-2">filter component</div>
+        <div className="col-lg-2 ms-4">
+          <Filter
+            pageNumber={pageNumber}
+            status={status}
+            updateStatus={updateStatus}
+            updateGender={updateGender}
+            updateSpecies={updateSpecies}
+            updatePageNumber={updatePageNumber}
+          />
+        </div>
         <div className="col">
-          <div className="row justify-content-center">
+          <div className="row">
             <Card results={data.results} />
           </div>
         </div>

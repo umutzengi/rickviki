@@ -12,17 +12,17 @@ const Card = ({ results }) => {
       return (
         <div
           key={id}
-          className="col-lg-3 col-md-6 col-sm-6 col-12 mb-4 position-relative text-dark"
+          className="container-fluid col-xs-8 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-4 position-relative text-dark"
         >
           <div
-            className={`${styles.card} d-flex flex-column justify-content-center`}
+            className={`${styles.card} d-inline-flex flex-col justify-content-start`}
           >
-            <img className={`${styles.img} img-fluid`} src={image} alt="" />
+            <img className={`${styles.img}`} src={image} alt="" />
             <div className={`${styles.content}`}>
-              <div className="fs-5 fw-bold mb-4">{name}</div>
-              <div className="">
-                <div className="fs-6 fw-normal">Last Location</div>
-                <div className="fs-5">{location.name}</div>
+              <div className="fs-3 fw-bold mb-4">{name}</div>
+              <div className="flex">
+                <div className="fs-4 fw-normal">Last Location:</div>
+                <div className=" fs-5">{location.name}</div>
               </div>
             </div>
           </div>
