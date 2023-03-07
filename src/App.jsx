@@ -39,8 +39,6 @@ const Fetcher = () => {
     ["characters", pageNumber, search, status, gender, species],
     () => fetchCharacters({ pageNumber, search, status, gender, species })
   );
-  if (isLoading) return "Loading...";
-
   if (error) return "An error has occured:" + error.massage;
   return (
     <div className="container-fluid">
@@ -58,18 +56,21 @@ const Fetcher = () => {
             updatePageNumber={updatePageNumber}
           />
         </div>
-        <div className="col">
-          <div className="row">
-            <Card results={data.results} />
+        {isLoading ? (
+          <div className="text-center">Loading...</div>
+        ) : (
+          <div className="col">
+            <div className="row">
+              <Card results={data.results} />
+            </div>
+            <Pagination
+              info={data && data.info}
+              pageNumber={pageNumber}
+              updatePageNumber={updatePageNumber}
+            />
           </div>
-        </div>
+        )}
       </div>
-
-      <Pagination
-        info={data.info}
-        pageNumber={pageNumber}
-        updatePageNumber={updatePageNumber}
-      />
     </div>
   );
 };
