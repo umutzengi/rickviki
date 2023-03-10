@@ -46,7 +46,7 @@ const Fetcher = () => {
       <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
 
       <div className="row">
-        <div className="col-lg-2 ms-4">
+        <div className="col-lg-2 ms-2">
           <Filter
             pageNumber={pageNumber}
             status={status}

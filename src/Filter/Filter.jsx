@@ -18,8 +18,10 @@ const Filter = ({
     window.location.reload(false);
   };
   return (
-    <div className="col-lg-12 col-12 mb-5">
-      <div className="text-center fw-bold fs-4 mb-2">Filters</div>
+    <div className="col-lg-12 col-12 mb-5 flex">
+      <div className="text-center align-items-center fw-bold fs-4 mb-2">
+        Filters
+      </div>
       <div
         style={{ cursor: "pointer" }}
         onClick={clear}
@@ -32,6 +34,14 @@ const Filter = ({
         <Status
           updatePageNumber={updatePageNumber}
           updateStatus={updateStatus}
+        />
+        <Species
+          updatePageNumber={updatePageNumber}
+          updateSpecies={updateSpecies}
+        />
+        <Gender
+          updatePageNumber={updatePageNumber}
+          updateGender={updateGender}
         />
       </div>
     </div>
