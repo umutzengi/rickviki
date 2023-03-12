@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import fetchCharacters from "./fetchCharacters";
-import Search from "./Search/Search";
-import Card from "./Card/Card";
-import Pagination from "./Pagination/Pagination";
-import Navbar from "./Navbar/Navbar";
-import Filter from "./Filter/Filter";
+import Home from "./Pages/Home";
+import Episodes from "./Pages/Episodes";
+import Location from "./Pages/Location";
+import Navbar from "./components/Navbar/Navbar";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,55 +22,17 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Fetcher />
-    </QueryClientProvider>
-  );
-};
-
-const Fetcher = () => {
-  let [pageNumber, updatePageNumber] = useState(1);
-  let [search, setSearch] = useState("");
-  let [status, updateStatus] = useState("");
-  let [gender, updateGender] = useState("");
-  let [species, updateSpecies] = useState("");
-
-  const { isLoading, error, data } = useQuery(
-    ["characters", pageNumber, search, status, gender, species],
-    () => fetchCharacters({ pageNumber, search, status, gender, species })
-  );
-  if (error) return "An error has occured:" + error.massage;
-  return (
-    <div className="container-fluid">
-      <h1 className="text-center mb-3">Characters</h1>
-      <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
-
-      <div className="row">
-        <div className="col-lg-2 ms-2">
-          <Filter
-            pageNumber={pageNumber}
-            status={status}
-            updateStatus={updateStatus}
-            updateGender={updateGender}
-            updateSpecies={updateSpecies}
-            updatePageNumber={updatePageNumber}
-          />
+      <Router>
+        <div>
+          <Navbar />
         </div>
-        {isLoading ? (
-          <div className="text-center">Loading...</div>
-        ) : (
-          <div className="col">
-            <div className="row">
-              <Card results={data.results} />
-            </div>
-            <Pagination
-              info={data && data.info}
-              pageNumber={pageNumber}
-              updatePageNumber={updatePageNumber}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/episodes" element={<Episodes />} />
+          <Route path="/location" element={<Location />} />
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 };
 

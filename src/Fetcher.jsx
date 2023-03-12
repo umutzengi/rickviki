@@ -1,10 +1,4 @@
-const fetchCharacters = async ({
-  pageNumber,
-  search,
-  status,
-  gender,
-  species,
-}) => {
+const Fetcher = async ({ pageNumber, search, status, gender, species }) => {
   const apiRes = await fetch(
     `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`
   );
@@ -12,4 +6,4 @@ const fetchCharacters = async ({
   return apiRes.json();
 };
 
-export default fetchCharacters;
+export default Fetcher;

@@ -1,47 +1,36 @@
 import React from "react";
 import FilterBTN from "../FilterBTN";
 
-const Species = ({ updateSpecies, updatePageNumber }) => {
-  let species = [
-    "Human",
-    "Alien",
-    "Humanoid",
-    "Mythological",
-    "Poopybutthole",
-    "Unknown",
-    "Animal",
-    "Robot",
-    "Cronenberg",
-    "Planet",
-    "Disease",
-  ];
+const Gender = ({ updateGender, updatePageNumber }) => {
+  let genders = ["female", "male", "genderless", "unknown"];
   return (
     <div className="accordion-item">
-      <h2 className="accordion-header" id="headingTwo">
+      <h2 className="accordion-header" id="headingThree">
         <button
           className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#collapseTwo"
+          data-bs-target="#collapseThree"
           aria-expanded="false"
-          aria-controls="collapseTwo"
+          aria-controls="collapseThree"
         >
-          Species
+          {" "}
+          Gender{" "}
         </button>
       </h2>
       <div
-        id="collapseTwo"
-        className="accordion-collapse collapse show"
-        aria-labelledby="headingTwo"
+        id="collapseThree"
+        className="accordion-collapse collapse"
+        aria-labelledby="headingThree"
         data-bs-parent="#accordionExample"
       >
         <div className="accordion-body d-flex flex-wrap gap-3">
-          {species.map((item, index) => (
+          {genders.map((item, index) => (
             <FilterBTN
               key={index}
               index={index}
-              name="species"
-              task={updateSpecies}
+              name="gender"
+              task={updateGender}
               updatePageNumber={updatePageNumber}
               input={item}
             />
@@ -52,4 +41,4 @@ const Species = ({ updateSpecies, updatePageNumber }) => {
   );
 };
 
-export default Species;
+export default Gender;
