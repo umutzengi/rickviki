@@ -3,7 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home";
 import Episodes from "./Pages/Episodes";
