@@ -2,12 +2,16 @@ $radius: 10px;
 .card {
   border: 2px solid #0b5ed7;
   border-radius: $radius;
+  max-width: 500px;
 }
 .content {
   padding: 10px;
+  max-height: 300px;
 }
 .img {
   border-radius: $radius 0 0 $radius;
+  width: 100%;
+  max-width: 200px;
 }
 .badge {
   top: 10px;

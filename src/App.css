@@ -1,0 +1,6 @@
+.logo {
+  width: 20vh;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+}
